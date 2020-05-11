@@ -1,6 +1,6 @@
 # Ml-Reco-Books 
 
-Here are peace of codes, that recommend us some books according to their categories.
+Here are peace of code, that recommends us some books according to their categories.
 
 Domain is composed of
 - Set all books
@@ -18,7 +18,7 @@ Goals
 
 ## Simplified diagram
 
-![variance](./images/ml-reco-books/diagram.png)
+![uml diagram](https://github.com/samyBadjoudj/ml-reco-books-python/raw/master/images/diagram.png)
 
 ## Recommendation by distances
 
@@ -30,7 +30,7 @@ There are many ways to compute distances here are some:
 - Manathan
 - Mahanlobis
 
-![variance](PycharmProjects/ml-reco-books/distances.png)
+![distances bar chart](https://github.com/samyBadjoudj/ml-reco-books-python/raw/master/images/distances.png)
 
 ## Feature elimination
 
@@ -48,7 +48,7 @@ The second case we will see with PCA how we can maximize the information during 
 
 
  
-![variance](PycharmProjects/ml-reco-books/scatter.png)
+![scatter plot](https://github.com/samyBadjoudj/ml-reco-books-python/raw/master/images/scatter.png)
 
 
 ## Mathematical derivation of Principal Component Analysis, why we end up by searching eigen vectors
@@ -67,25 +67,25 @@ Doing that will end up by computing eigen vectors, by first finding their eigen 
 
 First we start by defining the variance of the projected data :
    
-![variance](PycharmProjects/ml-reco-books/variance.png)
+![variance](https://github.com/samyBadjoudj/ml-reco-books-python/raw/master/images/variance.png)
 
 We put S as the following
 
-![variance](PycharmProjects/ml-reco-books/s_variance.png)
+![variance change var](https://github.com/samyBadjoudj/ml-reco-books-python/raw/master/images/s_variance.png)
 
 From there we want to maximize the variance of the project aka try to projected feature but not loosing information from removed features, far from the mean.  
 
 To maximize a multivariate equation with constraint (here ||v|| = 1, unitary vector), we can use a Lagrangian
   
-![variance](PycharmProjects/ml-reco-books/lagrangian.png)
+![lagrangian](https://github.com/samyBadjoudj/ml-reco-books-python/raw/master/images/lagrangian.png)
  
  After arranging the equation, to maximize it we compute the gradient of it
  
- ![variance](PycharmProjects/ml-reco-books/gradient.png)
+ ![gradient](https://github.com/samyBadjoudj/ml-reco-books-python/raw/master/images/gradient.png)
  
  So we end up with an equation with tha form 
  
- ![eigen equation](PycharmProjects/ml-reco-books/eigen_equation.png)
+ ![eigen equation](https://github.com/samyBadjoudj/ml-reco-books-python/raw/master/images/eigen_equation.png)
  
  Resolving this equation is equivalent to find eigen vectors and eigen values. Just pick the highest ones.
  
