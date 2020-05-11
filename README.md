@@ -9,12 +9,12 @@ Domain is composed of
 
 Goals
 - recommend a book based on favorite ones
-- draw 3d positions after feature elimination base on low variance
+- draw 3d positions after features elimination base on low variances
 - demonstrate PCA derivation by lagrangian and eigen values and vectors
 
 ## Technical components
-- C++ written library
-- Python client app to call .so library and plot (matplotlib & numpy)
+- [C++ written library](https://github.com/samyBadjoudj/ml-reco-books-cpp)
+- [Python client app to call .so library and plot (matplotlib & numpy)](https://github.com/samyBadjoudj/ml-reco-books-python/)
 
 ## Simplified diagram
 
@@ -59,10 +59,12 @@ visualise data. We will se why and how.
 
 
 
-If we think features as vectors.
-Geometrically is the same as saying I want to project (x1,x2) onto (x4, x5). So the aim of PCA is trying find those vector without loosing information (=keeping high variance)
+If we think features as vectors and we want to reduce dimensions.
+Geometrically is the same as saying I want to project (x1,x2,x3) onto (y4,y5). So the aim of PCA is trying find those vector without loosing information (=keeping high variance)
   
-Doing that will end up by computing eigen vectors, by first finding their eigen values, here is a method by using the Variance matrix.
+Doing that will end up by computing eigen vectors, by first finding their eigen values.  
+
+Here is a method by using the Variance matrix.
 
 
 First we start by defining the variance of the projected data :
@@ -73,7 +75,7 @@ We put S as the following
 
 ![variance change var](https://github.com/samyBadjoudj/ml-reco-books-python/raw/master/images/s_variance.png)
 
-From there we want to maximize the variance of the project aka try to projected feature but not loosing information from removed features, far from the mean.  
+From there we want to maximize the variance of the projected data aka try to project features but not loosing information from removed features, far from the mean.  
 
 To maximize a multivariate equation with constraint (here ||v|| = 1, unitary vector), we can use a Lagrangian
   
@@ -83,13 +85,13 @@ To maximize a multivariate equation with constraint (here ||v|| = 1, unitary vec
  
  ![gradient](https://github.com/samyBadjoudj/ml-reco-books-python/raw/master/images/gradient.png)
  
- So we end up with an equation with tha form 
+ So we end up with an equation with that form 
  
  ![eigen equation](https://github.com/samyBadjoudj/ml-reco-books-python/raw/master/images/eigen_equation.png)
  
  Resolving this equation is equivalent to find eigen vectors and eigen values. Just pick the highest ones.
  
- With few lines of code, Python package sklearn is doing all that for us :).
+ With few lines of code, Python package sklearn can do all that for us :).
  
  Samy Badjoudj
  
