@@ -1,14 +1,14 @@
 # Ml-Reco-Books 
 
-Here are peace of code, that recommends us some books according to their categories.
+Here is a piece of code, that recommends some books according to their categories.
 
 Domain is composed of
-- Set all books
+- Set of all books
 - Set of favorite books
 - Each book has qualified and valued categories (ex: <classic: 10.0>, <history: 2.0>)
 
 Goals
-- recommend a book based on favorite ones
+- recommend a book based on favourite ones
 - draw 3d positions after features elimination base on low variances
 - demonstrate PCA derivation by lagrangian and eigen values and vectors
 
@@ -22,12 +22,12 @@ Goals
 
 ## Recommendation by distances
 
-A simple approach is first to compute the centroid of our cluster aka our favorite books. Then we compute the distances between all others books. Books are defined by rated categories which are our features.
+A simple approach is first to compute the centroid of our cluster a.k.a our favorite books. Then we compute the distances between all others books. Books are defined by rated categories which are our features.
 We pickup the one with the smallest distances.   
 There are many ways to compute distances here are some:
 - Euclidian
 - Cosine
-- Manathan
+- Manhattan
 - Mahanlobis
 
 ![distances bar chart](https://github.com/samyBadjoudj/ml-reco-books-python/raw/master/images/distances.png)
@@ -35,12 +35,12 @@ There are many ways to compute distances here are some:
 ## Feature elimination
 
 When we deal with high dimensional data, we want to reduce that dimensionality without
-loosing too much information and keeping the important one.  
+loosing too much information while keeping the important information.  
 
 The first step is by knowing well the problem we want to solve.  
 Asking the question "is that feature meaningful to characterize by data ?"  
 
-To select or remove feature we can observe correlation between features, chi squared test... there plenty you can find online.
+To select or remove feature we can observe correlation between features, chi squared test... there is plenty you can find online.
 
 In our first case by choice, in order to plot it we will keep only the ones with high variances. We could have done PCA but I wanted only to derive it.
 
@@ -64,7 +64,7 @@ Geometrically is the same as saying I want to project (x1,x2,x3) onto (y4,y5). S
   
 Doing that will end up by computing eigen vectors, by first finding their eigen values.  
 
-Here is a method by using the Variance matrix.
+Here is a method of using the Variance matrix.
 
 
 First we start by defining the variance of the projected data :
@@ -75,7 +75,7 @@ We put S as the following
 
 ![variance change var](https://github.com/samyBadjoudj/ml-reco-books-python/raw/master/images/s_variance.png)
 
-From there we want to maximize the variance of the projected data aka try to project features but not loosing information from removed features, far from the mean.  
+From there we want to maximize the variance of the projected data a.k.a try to project features but not loosing information from removed features, far from the mean.  
 
 To maximize a multivariate equation with constraint (here ||v|| = 1, unitary vector), we can use a Lagrangian
   
@@ -85,11 +85,11 @@ To maximize a multivariate equation with constraint (here ||v|| = 1, unitary vec
  
  ![gradient](https://github.com/samyBadjoudj/ml-reco-books-python/raw/master/images/gradient.png)
  
- So we end up with an equation with that form 
+ So we end up with an equation with the form 
  
  ![eigen equation](https://github.com/samyBadjoudj/ml-reco-books-python/raw/master/images/eigen_equation.png)
  
- Resolving this equation is equivalent to find eigen vectors and eigen values. Just pick the highest ones.
+ Resolving this equation is equivalent to finding eigen vectors and eigen values. Just pick the highest ones.
  
  With few lines of code, Python package sklearn can do all that for us :).
  
